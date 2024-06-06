@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body suppressHydrationWarning className={clsx(inter.className, 'bg-background h-full')}>
+    <html suppressHydrationWarning lang="en" className="h-full">
+      <body className={clsx(inter.className, 'bg-background h-full')}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <div className="flex flex-col h-full">
             <Header/>
