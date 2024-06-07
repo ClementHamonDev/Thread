@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button'
 import ThemeToggle from '@/src/theme/ThemeToggle'
 import React from 'react'
+import { LoginButton } from '../auth/LoginButton'
 
 export const Header = async() => {
   return (
@@ -8,7 +8,7 @@ export const Header = async() => {
         <div className='container flex items-center py-2 max-w-lg gap-1'>
             <h2 className='text-2xl font-bold mr-auto'>Thread</h2>
             <ThemeToggle/>
-            <Button>Login</Button>
+            <LoginButton/>
         </div>
     </header>
   )
