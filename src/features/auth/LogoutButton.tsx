@@ -1,20 +1,27 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { LogIn } from 'lucide-react';
+import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { Loader } from '@/components/ui/loader';
+import { LogIn, LogOut } from 'lucide-react';
 import { signOut } from 'next-auth/react';
-import React from 'react'
+import React, { useTransition } from 'react'
 
-export const LoginButton = () => {
-    return (
-      <Button
-        onClick={() => {
-          signOut();
-        }}
-      >
-        <LogIn className="m-2 h-4 w-4" />
-        Login
-      </Button>
-    );
-  };
+export const DropdownItemLogout = () => {
+  const [isPending, setIsPending] = useTransition();
+  return (
+    <DropdownMenuItem
+      onClick={() => {
+        signOut();
+      }}
+    >
+      {isPending ? (
+        <Loader className="mr-2" />
+      ) : (
+        <LogOut className="mr-2 h-4 w-4" />
+      )}
+      Logout
+    </DropdownMenuItem>
+  );
+};
   
