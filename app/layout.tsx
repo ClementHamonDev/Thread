@@ -25,7 +25,7 @@ export default function RootLayout({
           <div className="flex flex-col h-full">
             <Header />
             <ScrollArea>
-              <div className="flex-1 max-w-lg m-auto py-12 w-full">
+              <div className="flex-none max-w-lg m-auto py-12 w-full">
                 {children}
               </div>
             </ScrollArea>

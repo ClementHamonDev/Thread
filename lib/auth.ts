@@ -10,15 +10,28 @@ export const authOptions: AuthOptions = {
     GithubProvider({
       clientId: env.GITHUB_ID,
       clientSecret: env.GITHUB_SECRET,
+      profile(profile){
+        console.log(profile.login)
+        return{
+          id: profile.id.toString(),
+          username: profile.login,
+          name: profile.login,
+          image: profile.avatar_url,
+          email: profile.email,
+          tag: profile.login
+        }
+      }
     })
   ],
   callbacks: {
     session( {session, user}) {
+      console.log(session.user)
       if (session?.user) return session
       session.user.id = user.id;
       return session;
     }
-  }
+  },
+
 }
 
 export const getAuthSession = async() => {

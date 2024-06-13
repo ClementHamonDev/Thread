@@ -55,12 +55,66 @@ model VerificationToken {
  
 model User {
   id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
+  username      String 
+  name          String
+  email         String    @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
+  tag           String    @unique
+  bio           String?
+  createdAt     DateTime @default(now())
+
   accounts      Account[]
   sessions      Session[]
- 
+
+  followers     Follow[] @relation("follower")
+  followeds     Follow[] @relation("followed")
+
+  posts         Post[] 
+
+  likes         Like[]
+
   @@map("users")
+}
+
+model Follow {
+  id            String    @id @default(cuid())
+  followerID    String
+  followingID   String
+  createdAt     DateTime @default(now())
+
+  follower      User @relation("follower", fields: [followerID], references: [id], onDelete: Cascade)
+  followed      User @relation("followed", fields: [followingID], references: [id], onDelete: Cascade)
+
+  @@map("follows")
+}
+
+
+
+model Post {
+  id            String    @id @default(cuid())
+  username      String
+  tag           String
+  image         String
+  parentID      String
+  userID        String
+
+  user          User @relation(fields: [userID], references: [id], onDelete: Cascade)
+  replies       Post[] @relation("comments")
+  parent        Post? @relation("comments", fields: [parentID], references: [id], onDelete: Cascade)
+
+  likes        Like[]
+
+  @@map("posts")
+}
+
+model Like{
+  id            String    @id @default(cuid())
+  userID        String
+  postID        String 
+          
+  user          User @relation(fields: [userID], references: [id], onDelete: Cascade)
+  likedPosts    Post @relation(fields: [postID], references: [id], onDelete: Cascade)
+
+  @@map("likes")
 }

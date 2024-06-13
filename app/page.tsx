@@ -1,13 +1,12 @@
-'use server';
 
 import Post from "@/src/features/card/Post";
 
-export default async function Home() {
+export default function Home() {
   return (
-    <div className="px-4 m-w-lg">
-      <Post/>
-      <Post/>
-      <Post/>
+    <div className="px-4 max-w-lg">
+      <Post username={""} tag={""} text={""} avatarUrl={""}/>
+      <Post username={""} tag={""} text={""} avatarUrl={""}/>
+      <Post username={""} tag={""} text={""} avatarUrl={""}/>
     </div>
   );
 }
