@@ -95,9 +95,10 @@ model Post {
   id            String    @id @default(cuid())
   username      String
   tag           String
-  image         String
-  parentID      String
+  image         String?
+  parentID      String?
   userID        String
+  content       String
 
   user          User @relation(fields: [userID], references: [id], onDelete: Cascade)
   replies       Post[] @relation("comments")

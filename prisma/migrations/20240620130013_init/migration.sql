@@ -62,6 +62,7 @@ CREATE TABLE "posts" (
     "image" TEXT NOT NULL,
     "parentID" TEXT NOT NULL,
     "userID" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
     CONSTRAINT "posts_userID_fkey" FOREIGN KEY ("userID") REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT "posts_parentID_fkey" FOREIGN KEY ("parentID") REFERENCES "posts" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
