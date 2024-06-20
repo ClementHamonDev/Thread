@@ -99,6 +99,7 @@ model Post {
   parentID      String?
   userID        String
   content       String
+  createAt      DateTime @default(now())
 
   user          User @relation(fields: [userID], references: [id], onDelete: Cascade)
   replies       Post[] @relation("comments")

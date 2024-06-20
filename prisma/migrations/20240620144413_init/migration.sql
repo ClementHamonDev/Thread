@@ -59,10 +59,11 @@ CREATE TABLE "posts" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "username" TEXT NOT NULL,
     "tag" TEXT NOT NULL,
-    "image" TEXT NOT NULL,
-    "parentID" TEXT NOT NULL,
+    "image" TEXT,
+    "parentID" TEXT,
     "userID" TEXT NOT NULL,
     "content" TEXT NOT NULL,
+    "createAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT "posts_userID_fkey" FOREIGN KEY ("userID") REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT "posts_parentID_fkey" FOREIGN KEY ("parentID") REFERENCES "posts" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );

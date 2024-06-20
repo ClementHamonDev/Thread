@@ -3,30 +3,30 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { MessageCircle, Repeat2, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function Post({ username, tag, text, avatarUrl }: { username: string, tag: string, text: string, avatarUrl: string }) {
+export default function Post({ username, tag, text, avatarUrl, id }: { username: string, tag: string, text: string, avatarUrl: string | null, id: string }) {
   return (
     <div className="pb-4">
       <Card>
         <CardHeader className="grid w-full">
           <Avatar>
-            <AvatarImage src={avatarUrl} />
+            <AvatarImage src={avatarUrl ?? undefined} />
             <AvatarFallback>?</AvatarFallback>
           </Avatar>
           <div className="flex gap-2 items-center">
-          <CardTitle>Username {username}</CardTitle>
-          <CardDescription>@tag @{tag}</CardDescription></div>
+          <CardTitle>{username}</CardTitle>
+          <CardDescription>@{tag}</CardDescription></div>
         </CardHeader>
         <CardContent>
-          <p>Text might seem like a boring component. {text}</p>
+          <p>{text}</p>
         </CardContent>
         <CardFooter className="flex justify-evenly" >
-          <Button variant='outline' className="border-none">
+          <Button variant='ghost' className="border-none">
             <MessageCircle />
           </Button>
-          <Button variant='outline' className="border-none">
+          <Button variant='ghost' className="border-none">
             <Repeat2 />
           </Button>
-          <Button variant='outline' className="border-none">
+          <Button variant='ghost' className="border-none">
             <Upload />
           </Button>
         </CardFooter>
