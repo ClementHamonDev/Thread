@@ -93,9 +93,6 @@ model Follow {
 
 model Post {
   id            String    @id @default(cuid())
-  username      String
-  tag           String
-  image         String?
   parentID      String?
   userID        String
   content       String
